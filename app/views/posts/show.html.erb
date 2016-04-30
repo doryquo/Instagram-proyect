@@ -1,0 +1,30 @@
+<%= render 'post', post: @post %>
+<% if @post.user.id == current_user.id %>
+  <div class="text-center edit-links">
+    <%= link_to "Cancelar", posts_path %>
+    |
+    <%= link_to "Editar el post", edit_post_path(@post) %>
+  </div>
+<% else %>
+  <div class="text-center edit-links">
+    <%= link_to "Cancelar", posts_path %>
+  </div>
+<% end %>
+  </div>
+</div>
+<div class="text-center edit-links">
+  <%= link_to "Borrar Post", post_path(@post), method: :delete, data: { confirm: "¿Estás segura que quieres eliminar este post?" } %>
+  |
+  <%= link_to "Cancelar", posts_path %>
+</div>
+<% if @post.user == current_user %>
+  <div class="text-center edit-links">
+    <%= link_to "← Volver", posts_path %>
+    |
+    <%= link_to "Edit post", edit_post_path(@post) %>
+  </div>
+  <% else %>
+  <div class="text-center edit-links">
+    <%= link_to "← Volver", posts_path %>
+  </div>
+  <% end  %>
